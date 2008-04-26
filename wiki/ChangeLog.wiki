@@ -1,0 +1,9 @@
+#summary Lists the history of changes to the Wesabe budgeting workbook.
+
+= Version 1.1 (April 26,2008) =
+
+* Fixed the Monthly Spending and Weekly Spending worksheets to handle the scenario where there is no tag splits column in the Transactions worksheet. ([http://code.google.com/p/wesabe-excel-budget/issues/detail?id=3 Issue 3])
+
+= Version 1.0 (February 3, 2008) =
+
+* Original version
