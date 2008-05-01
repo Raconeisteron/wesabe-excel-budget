@@ -1,5 +1,9 @@
 #summary Lists the history of changes to the Wesabe budgeting workbook.
 
+=Version 1.2 (May 1, 2008)=
+
+  * Fixed a bug that occured when a week or month had no data. Range names were not being generated after a missing week or month.
+
 =Version 1.1 (April 26, 2008)=
 
   * Fixed the Monthly Spending and Weekly Spending worksheets to handle the scenario where there is no tag splits column in the Transactions worksheet. ([http://code.google.com/p/wesabe-excel-budget/issues/detail?id=3 Issue 3])
