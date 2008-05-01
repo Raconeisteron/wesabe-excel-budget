@@ -223,75 +223,79 @@ Private Sub CreateWesabeRangeNames(transactionsSheet As Worksheet, transactionDa
         Dim firstDateCell As Range
         Dim monthRangeIndex As Integer
         For monthRangeIndex = 0 To transMonthCount
-            Set firstDateCell = .Cells(firstCellInMonth(monthRangeIndex), transactionDatesColumn)
-            Dim monthNameSuffix As String
-            monthNameSuffix = Year(firstDateCell.Value) & Month(firstDateCell.Value)
+            If firstCellInMonth(monthRangeIndex) > 0 Then
+                Set firstDateCell = .Cells(firstCellInMonth(monthRangeIndex), transactionDatesColumn)
+                Dim monthNameSuffix As String
+                monthNameSuffix = Year(firstDateCell.Value) & Month(firstDateCell.Value)
             
-            If transactionDatesColumn > 0 Then
-                .Names.Add _
-                    Name:="WesabeTransactionDate" & monthNameSuffix, _
-                    RefersTo:="=" & .Cells(firstCellInMonth(monthRangeIndex), transactionDatesColumn).Address & ":" & .Cells(lastCellInMonth(monthRangeIndex), transactionDatesColumn).Address
-            End If
+                If transactionDatesColumn > 0 Then
+                    .Names.Add _
+                        Name:="WesabeTransactionDate" & monthNameSuffix, _
+                        RefersTo:="=" & .Cells(firstCellInMonth(monthRangeIndex), transactionDatesColumn).Address & ":" & .Cells(lastCellInMonth(monthRangeIndex), transactionDatesColumn).Address
+                End If
             
-            If amountsColumn > 0 Then
-                .Names.Add _
-                    Name:="WesabeAmount" & monthNameSuffix, _
-                    RefersTo:="=" & .Cells(firstCellInMonth(monthRangeIndex), amountsColumn).Address & ":" & .Cells(lastCellInMonth(monthRangeIndex), amountsColumn).Address
-            End If
+                If amountsColumn > 0 Then
+                    .Names.Add _
+                        Name:="WesabeAmount" & monthNameSuffix, _
+                        RefersTo:="=" & .Cells(firstCellInMonth(monthRangeIndex), amountsColumn).Address & ":" & .Cells(lastCellInMonth(monthRangeIndex), amountsColumn).Address
+                End If
             
-            If aggregateAmountsColumn > 0 Then
-                .Names.Add _
-                    Name:="WesabeAggregateAmount" & monthNameSuffix, _
-                    RefersTo:="=" & .Cells(firstCellInMonth(monthRangeIndex), aggregateAmountsColumn).Address & ":" & .Cells(lastCellInMonth(monthRangeIndex), aggregateAmountsColumn).Address
-            End If
+                If aggregateAmountsColumn > 0 Then
+                    .Names.Add _
+                        Name:="WesabeAggregateAmount" & monthNameSuffix, _
+                        RefersTo:="=" & .Cells(firstCellInMonth(monthRangeIndex), aggregateAmountsColumn).Address & ":" & .Cells(lastCellInMonth(monthRangeIndex), aggregateAmountsColumn).Address
+                End If
             
-            If tagsColumn > 0 Then
-                .Names.Add _
-                    Name:="WesabeTagName" & monthNameSuffix, _
-                    RefersTo:="=" & .Cells(firstCellInMonth(monthRangeIndex), tagsColumn).Address & ":" & .Cells(lastCellInMonth(monthRangeIndex), tagsColumn).Address
-            End If
+                If tagsColumn > 0 Then
+                    .Names.Add _
+                        Name:="WesabeTagName" & monthNameSuffix, _
+                        RefersTo:="=" & .Cells(firstCellInMonth(monthRangeIndex), tagsColumn).Address & ":" & .Cells(lastCellInMonth(monthRangeIndex), tagsColumn).Address
+                End If
             
-            If splitAmountsColumn > 0 Then
-                .Names.Add _
-                    Name:="WesabeSplitAmount" & monthNameSuffix, _
-                    RefersTo:="=" & .Cells(firstCellInMonth(monthRangeIndex), splitAmountsColumn).Address & ":" & .Cells(lastCellInMonth(monthRangeIndex), splitAmountsColumn).Address
+                If splitAmountsColumn > 0 Then
+                    .Names.Add _
+                        Name:="WesabeSplitAmount" & monthNameSuffix, _
+                        RefersTo:="=" & .Cells(firstCellInMonth(monthRangeIndex), splitAmountsColumn).Address & ":" & .Cells(lastCellInMonth(monthRangeIndex), splitAmountsColumn).Address
+                End If
             End If
         Next monthRangeIndex
     
         Dim isoWeekRangeIndex As Integer
         For isoWeekRangeIndex = 0 To transIsoWeekCount
-            Set firstDateCell = .Cells(firstCellInIsoWeek(isoWeekRangeIndex), transactionDatesColumn)
-            Dim weekNameSuffix As String
-            weekNameSuffix = IsoYear(firstDateCell.Value) & "W" & IsoWeek(firstDateCell.Value)
+            If firstCellInIsoWeek(isoWeekRangeIndex) > 0 Then
+                Set firstDateCell = .Cells(firstCellInIsoWeek(isoWeekRangeIndex), transactionDatesColumn)
+                Dim weekNameSuffix As String
+                weekNameSuffix = IsoYear(firstDateCell.Value) & "W" & IsoWeek(firstDateCell.Value)
+                
+                If transactionDatesColumn > 0 Then
+                    .Names.Add _
+                        Name:="WesabeTransactionDate" & weekNameSuffix, _
+                        RefersTo:="=" & .Cells(firstCellInIsoWeek(isoWeekRangeIndex), transactionDatesColumn).Address & ":" & .Cells(lastCellInIsoWeek(isoWeekRangeIndex), transactionDatesColumn).Address
+                End If
             
-            If transactionDatesColumn > 0 Then
-                .Names.Add _
-                    Name:="WesabeTransactionDate" & weekNameSuffix, _
-                    RefersTo:="=" & .Cells(firstCellInIsoWeek(isoWeekRangeIndex), transactionDatesColumn).Address & ":" & .Cells(lastCellInIsoWeek(isoWeekRangeIndex), transactionDatesColumn).Address
-            End If
-        
-            If amountsColumn > 0 Then
-                .Names.Add _
-                    Name:="WesabeAmount" & weekNameSuffix, _
-                    RefersTo:="=" & .Cells(firstCellInIsoWeek(isoWeekRangeIndex), amountsColumn).Address & ":" & .Cells(lastCellInIsoWeek(isoWeekRangeIndex), amountsColumn).Address
-            End If
-            
-            If aggregateAmountsColumn > 0 Then
-                .Names.Add _
-                    Name:="WesabeAggregateAmount" & weekNameSuffix, _
-                    RefersTo:="=" & .Cells(firstCellInIsoWeek(isoWeekRangeIndex), aggregateAmountsColumn).Address & ":" & .Cells(lastCellInIsoWeek(isoWeekRangeIndex), aggregateAmountsColumn).Address
-            End If
-            
-            If tagsColumn > 0 Then
-                .Names.Add _
-                    Name:="WesabeTagName" & weekNameSuffix, _
-                    RefersTo:="=" & .Cells(firstCellInIsoWeek(isoWeekRangeIndex), tagsColumn).Address & ":" & .Cells(lastCellInIsoWeek(isoWeekRangeIndex), tagsColumn).Address
-            End If
-            
-            If splitAmountsColumn > 0 Then
-                .Names.Add _
-                    Name:="WesabeSplitAmount" & weekNameSuffix, _
-                    RefersTo:="=" & .Cells(firstCellInIsoWeek(isoWeekRangeIndex), splitAmountsColumn).Address & ":" & .Cells(lastCellInIsoWeek(isoWeekRangeIndex), splitAmountsColumn).Address
+                If amountsColumn > 0 Then
+                    .Names.Add _
+                        Name:="WesabeAmount" & weekNameSuffix, _
+                        RefersTo:="=" & .Cells(firstCellInIsoWeek(isoWeekRangeIndex), amountsColumn).Address & ":" & .Cells(lastCellInIsoWeek(isoWeekRangeIndex), amountsColumn).Address
+                End If
+                
+                If aggregateAmountsColumn > 0 Then
+                    .Names.Add _
+                        Name:="WesabeAggregateAmount" & weekNameSuffix, _
+                        RefersTo:="=" & .Cells(firstCellInIsoWeek(isoWeekRangeIndex), aggregateAmountsColumn).Address & ":" & .Cells(lastCellInIsoWeek(isoWeekRangeIndex), aggregateAmountsColumn).Address
+                End If
+                
+                If tagsColumn > 0 Then
+                    .Names.Add _
+                        Name:="WesabeTagName" & weekNameSuffix, _
+                        RefersTo:="=" & .Cells(firstCellInIsoWeek(isoWeekRangeIndex), tagsColumn).Address & ":" & .Cells(lastCellInIsoWeek(isoWeekRangeIndex), tagsColumn).Address
+                End If
+                
+                If splitAmountsColumn > 0 Then
+                    .Names.Add _
+                        Name:="WesabeSplitAmount" & weekNameSuffix, _
+                        RefersTo:="=" & .Cells(firstCellInIsoWeek(isoWeekRangeIndex), splitAmountsColumn).Address & ":" & .Cells(lastCellInIsoWeek(isoWeekRangeIndex), splitAmountsColumn).Address
+                End If
             End If
         Next
     End With
