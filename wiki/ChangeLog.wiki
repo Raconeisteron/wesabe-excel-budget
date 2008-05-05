@@ -1,5 +1,9 @@
 #summary Lists the history of changes to the Wesabe budgeting workbook.
 
+=Version 1.2.1 (May 5, 2008)=
+
+  * In version 1.2, the Ctrl+Shift+D shortcut key was not configured correctly. This would result in transaction data not updating and {{{#REF!}}} errors for downloaded data. ([http://code.google.com/p/wesabe-excel-budget/issues/detail?id=4 Issue 4])
+
 =Version 1.2 (May 1, 2008)=
 
   * Fixed a bug that occured when a week or month had no data. Range names were not being generated after a missing week or month.
