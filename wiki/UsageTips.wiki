@@ -10,6 +10,8 @@ The weekly budgets are calculated based on the monthly budgets you enter at the 
 
 You'll notice that there are two total columns, the first is an all-inclusive total, and the second is a total of all but one of the tag columns. I have found that I don't have direct control over many of the things I tag as bills so the second total column lets me see how much I'm over or under on things that I can actually control during the month.
 
+If you need more tags, you can copy the existing formulas into more columns. For more detailed instructions see this [https://www.wesabe.com/groups/50-wesabe-api-developers/discussions/2929-excel-add-in#comment_25972 post on Wesabe Groups].
+
 = Understanding the spending analysis =
 
 Each of the Weekly and Monthly worksheets displays information about how your spending relates to your budget on the date in the first column. What works best for me is to use Monthly Difference worksheet the most. I look at today's numbers to see if I'm over or under budget, and I look at the numbers for the last day of the month to see how much I have left for each tag. When I'm over budget for a tag, I also look at the Monthly Spending Percent worksheet to get a sense of how far over budget I am in proportion to the budget for that category.
